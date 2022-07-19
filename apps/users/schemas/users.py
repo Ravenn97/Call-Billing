@@ -7,4 +7,4 @@ class UserSchema(Schema):
 class CallingSchema(Schema):
     call_duration = fields.Integer(required=True, validate=validate.Range(min=1))
     blocks = fields.Integer(required=False)
-    user = fields.Nested(UserSchema, required=True)
+    user = fields.Nested(UserSchema)

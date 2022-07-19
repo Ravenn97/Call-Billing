@@ -9,7 +9,6 @@ from apps.users import models
 class CallSaving(Resource):
     
     def put(self, user_name):
-        print("USER_NAME: ", user_name)
         _data = request.get_json()
         call_duration = _data["call_duration"]
 
