@@ -1,0 +1,14 @@
+
+Flask
+Flask-API
+Flask-Cors
+Flask-RESTful
+Faker
+gunicorn
+itsdangerous
+Werkzeug
+flask-mongoengine
+WTForms
+marshmallow
+dateparser
+mongomock==4.1.2

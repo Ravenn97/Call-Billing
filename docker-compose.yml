@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/code
+    environment:
+      - APP_ENV=prod
+      - APP_DEBUG=False
+      - APP_PORT=5000
+      - MONGODB_DB=thecall
+      - MONGODB_USERNAME=root
+      - MONGODB_PASSWORD=example
+      - MONGODB_HOST=mongo
+      - MONGODB_PORT=27017
+    command: sh -c "python wsgi.py"
+    networks:
+      - mongodb
+
+
+# db:
+#   image: mongo:latest
+#   hostname: db
+#   command: mongod --auth
+
+#   environment:
+#     - MONGODB_DATABASE=thecall
+#     - MONGO_INITDB_ROOT_USERNAME=root
+#     - MONGO_INITDB_ROOT_PASSWORD=root123
+#   ports:
+#     - 27017:27017
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    networks:
+      - mongodb
+
+
+networks:
+  mongodb:
+    driver: bridge
